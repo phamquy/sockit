@@ -334,6 +334,7 @@ NSString* kTemporaryBackslashToken = @"/backslash/";
   id returnValue = nil;
 
   if (succeeded) {
+    returnValue = object;
     NSMethodSignature* sig = [object methodSignatureForSelector:selector];
     NSAssert(nil != sig, @"%@ does not respond to selector: '%@'", object, NSStringFromSelector(selector));
 

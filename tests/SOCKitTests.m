@@ -216,8 +216,7 @@ NSString *sockitBetterURLEncodeString(NSString *unencodedString);
 
 // NSString's stringByAddingPercentEscapes doesn't do a complete job (it ignores "/?&", among others)
 NSString *sockitBetterURLEncodeString(NSString *unencodedString) {
-    NSString * encodedString = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes( NULL, (CFStringRef)unencodedString, NULL,
-                                                                                   (CFStringRef)@"!*'();:@&=+$,/?%#[]", NSASCIIStringEncoding ));
+    NSString* encodedString = [unencodedString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]];
     return encodedString;
 }
 
